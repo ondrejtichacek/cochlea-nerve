@@ -1,3 +1,3 @@
 # cochlea-nerve
 
-Code of the model of human auditory periphery published in Tichacek 2023
+Code of the model of mammalian auditory periphery by Tichacek et al.
