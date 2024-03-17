@@ -1,0 +1,6 @@
+[submodule "externals/matlab2tikz"]
+	path = externals/matlab2tikz
+	url = https://github.com/matlab2tikz/matlab2tikz.git
+[submodule "externals/ltfat"]
+	path = externals/ltfat
+	url = https://github.com/ltfat/ltfat.git

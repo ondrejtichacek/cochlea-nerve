@@ -231,6 +231,8 @@ PEAK_PROPERTIES_Nerve = { ...
     ...'MaxPeakWidth', 0.1, ...
     };
 
+% Currenlty we don't calculate statistics on N_Na and Istim - needs to be
+% reimplemented.
 % vars = {'V', 'N_Na', 'Istim'};
 % var_names = {'Volt', 'N_Na', 'Istim'};
 vars = {'V'};

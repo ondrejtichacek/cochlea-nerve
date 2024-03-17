@@ -14,6 +14,7 @@ arguments
     plotopt
 
     args.init_flag = false
+    args.postprocess_windows_plot = {}
 end
 %ANT
 disp_title( 'Auditory Nerve Transduction Simulation', '*' );
@@ -295,12 +296,16 @@ end
 
 %% Plotting
 
+if isempty(args.postprocess_windows_plot)
+    args.postprocess_windows_plot = postprocess_windows;
+end
+
 if runopt.plot.ant_postprocess
     if isempty(ANTStatistics)
         warning('Can''t plot ANT Postprocess -- variable empty. Make sure runopt.do.ant_postprocess is set to true.')
     else
-        for i = 1:numel(postprocess_windows)
-            w = postprocess_windows{i};
+        for i = 1:numel(args.postprocess_windows_plot)
+            w = args.postprocess_windows_plot{i};
             ANTPostprocessPlotting( ANTStatistics.(w), SynResFile, NerveResFile, potential, time, Signal, antopt, hhopt, runopt, plotopt, stimulus, 1 )
         end
     end
@@ -343,8 +348,8 @@ if runopt.plot.synapse_avg
     if numel(SynResFile{1}.n) > 1
         warning("Can't plot for multi-position sim.")
     else
-        for i = 1:numel(postprocess_windows)
-            w = postprocess_windows{i};
+        for i = 1:numel(args.postprocess_windows_plot)
+            w = args.postprocess_windows_plot{i};
             if isempty(NerveResFile)
                 Nrv = [];
             else
@@ -366,8 +371,8 @@ if runopt.plot.synapse
         warning("Can't plot for multi-position sim.")
     else
         fprintf('Plotting slice %d ...\n', antopt.slicesToExcite(maxslice_relative))
-        for i = 1:numel(postprocess_windows)
-            w = postprocess_windows{i};
+        for i = 1:numel(args.postprocess_windows_plot)
+            w = args.postprocess_windows_plot{i};
             SynapsePlotting( potential, time, ANTStatistics.(w), SynResFile(SEL), NerveResFile(SEL), antopt, hhopt, opt, runopt, plotopt, maxslice_relative );
         end
     end

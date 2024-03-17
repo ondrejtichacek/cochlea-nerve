@@ -111,6 +111,7 @@ arguments
     args.analysis_compare_to = []
     args.analysis_plot_variables (1,:) cell = {}
 
+    args.postprocess_windows_plot (1,:) cell = {}
     args.postprocess_window (1,:) char = ''
     
     args.time_limit (1,1) double = +Inf;  % in seconds

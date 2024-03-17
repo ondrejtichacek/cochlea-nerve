@@ -1,0 +1,13 @@
+function [ RHS ] = amplifier_lin_VOHC( ~, vohc, N, ~, TMa, BMy, ~, ~, const_OHC_force)
+
+% fun  = BMy .* const_OHC_force .* vohc;
+fun  = BMy .* const_OHC_force .* vohc;
+
+RHS = [ ...
+    zeros(N,1); ...
+    -fun; ...
+    zeros(N,1); ...
+    TMa.*fun];
+
+end
+
